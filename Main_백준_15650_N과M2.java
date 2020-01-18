@@ -14,8 +14,8 @@ public class Main_백준_15650_N과M2 {
 			StringBuilder sb = new StringBuilder();
 			for(int i=0;i<m;i++)
 				sb.append(res[i] + " ");
-			
 			sb.append("\n");
+			
 			System.out.print(sb.toString());
 			
 			return;
