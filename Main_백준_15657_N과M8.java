@@ -22,7 +22,7 @@ public class Main_백준_15657_N과M8 {
 		
 		for(int i=start;i<n;i++){
 			res[depth] = data[i];
-			homogeneous(n, m, depth + 1 , i);
+			homogeneous(n, m, depth + 1, i);
 		}
 	}
 	
