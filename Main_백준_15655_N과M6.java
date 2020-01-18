@@ -15,7 +15,6 @@ public class Main_백준_15655_N과M6 {
 		if(depth == m){
 			for(int i=0;i<m;i++)
 				sb.append(res[i] + " ");
-			
 			sb.append("\n");
 			
 			return;

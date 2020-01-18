@@ -15,7 +15,6 @@ public class Main_백준_15654_N과M5 {
 		if(depth == m){
 			for(int i=0;i<m;i++)
 				sb.append(res[i] + " ");
-			
 			sb.append("\n");
 			
 			return;

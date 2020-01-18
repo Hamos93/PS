@@ -18,7 +18,6 @@ public class Main_백준_15663_N과M9 {
 			StringBuilder sb = new StringBuilder();
 			for(int i=0;i<m;i++)
 				sb.append(res[i] + " ");
-
 			sb.append("\n");
 
 			set.add(sb.toString());
