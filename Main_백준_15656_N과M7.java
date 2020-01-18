@@ -13,7 +13,6 @@ public class Main_백준_15656_N과M7 {
 		if(depth == m){
 			for(int i=0;i<m;i++)
 				sb.append(res[i] + " ");
-			
 			sb.append("\n");
 			
 			return;
