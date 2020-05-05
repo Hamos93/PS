@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Solution_D1_2058_ÀÚ¸´¼ö´õÇÏ±â {
+public class Solution_D1_2058_ìë¦¿ìˆ˜ë”í•˜ê¸° {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");

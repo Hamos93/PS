@@ -1,5 +1,5 @@
 
-public class Solution_D1_2027_´ë°¢¼±Ãâ·ÂÇÏ±â {
+public class Solution_D1_2027_ëŒ€ê°ì„ ì¶œë ¥í•˜ê¸° {
 	public static void main(String[] args) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("#++++\n");

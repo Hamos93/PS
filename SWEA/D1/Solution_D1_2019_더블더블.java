@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Solution_D1_2019_´õºí´õºí {
+public class Solution_D1_2019_ë”ë¸”ë”ë¸” {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
