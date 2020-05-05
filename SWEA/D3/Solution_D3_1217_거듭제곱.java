@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Solution_D3_1217_°ÅµìÁ¦°ö {
+public class Solution_D3_1217_ê±°ë“­ì œê³± {
 	private static int pow(int n, int m) {
 		if(m == 0) return 1;
 		return n * pow(n, m-1);
