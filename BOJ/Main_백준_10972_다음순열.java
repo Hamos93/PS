@@ -32,7 +32,6 @@ public class Main_백준_10972_다음순열 {
 		}
 		
 		return true; // 다음순열이 존재하는 경우
-	
 	}
 	
 	public static void main(String[] args) throws Exception {
