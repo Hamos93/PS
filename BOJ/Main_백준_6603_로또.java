@@ -3,17 +3,17 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main_백준_6603_로또 {
-	private static int[] data;
-	private static int[] lotto;
+	private static int[] S;
+	private static int[] res;
 	private static boolean[] visit;
+	private static StringBuilder sb;
 	
 	private static void combination(int n, int r, int depth, int start) {
 		if(depth == r) {
-			StringBuilder sb = new StringBuilder();
-			
-			for(int i=0;i<r;i++)
-				sb.append(lotto[i] + " ");
-			System.out.println(sb.toString());
+			for(int i=0;i<r;i++) {
+				if(i == r-1) sb.append(res[i] + "\n");
+				else sb.append(res[i] + " ");
+			}
 			
 			return;
 		}
@@ -21,10 +21,10 @@ public class Main_백준_6603_로또 {
 		for(int i=start;i<n;i++) {
 			if(!visit[i]) {
 				visit[i] = true;
-				lotto[depth] = data[i];
+				res[depth] = S[i];
 				
 				combination(n, r, depth + 1, i);
-
+				
 				visit[i] = false;
 			}
 		}
@@ -33,23 +33,26 @@ public class Main_백준_6603_로또 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = null;
+		sb = new StringBuilder();
 		
 		while(true) {
 			st = new StringTokenizer(br.readLine(), " ");
 			
-			int K = Integer.parseInt(st.nextToken());
-
-			if(K == 0) break;
+			int k = Integer.parseInt(st.nextToken());
+			if(k == 0) break;
 			
-			data = new int[K];
-			lotto = new int[6];
-			visit = new boolean[K];
+			S = new int[k];
+			for(int i=0;i<k;i++)
+				S[i] = Integer.parseInt(st.nextToken());
 			
-			for(int i=0;i<K;i++)
-				data[i] = Integer.parseInt(st.nextToken());
+			res = new int[6];
+			visit = new boolean[k];
 			
-			combination(K, 6, 0, 0);
-			System.out.println();
+			combination(k, 6, 0, 0);
+			
+			sb.append("\n");
 		}
+		
+		System.out.print(sb.toString());
 	}
 }
