@@ -8,34 +8,34 @@ public class Main_백준_10828_스택 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
-		Stack<Integer> stack = new Stack<>();
-
 		int N = Integer.parseInt(st.nextToken());
-		while(N-- > 0){
+		
+		Stack<Integer> stack = new Stack<>();
+		while(0 < N--) {
 			st = new StringTokenizer(br.readLine(), " ");
 			
 			String command = st.nextToken();
 			
-			if(command.equals("push")) {
-				int value = Integer.parseInt(st.nextToken());
-				stack.push(value);
-			}
-			
-			if(command.equals("pop")){
+			switch (command) {
+			case "push":
+				int num = Integer.parseInt(st.nextToken());
+				stack.push(num);
+				break;
+			case "pop":
 				if(stack.isEmpty()) System.out.println("-1");
 				else System.out.println(stack.pop());
-			}
-			
-			if(command.equals("size")) System.out.println(stack.size());
-			
-			if(command.equals("empty")) {
+				break;
+			case "size":
+				System.out.println(stack.size());
+				break;
+			case "empty":
 				if(stack.isEmpty()) System.out.println("1");
 				else System.out.println("0");
-			}
-			
-			if(command.equals("top")){
+				break;
+			case "top":
 				if(stack.isEmpty()) System.out.println("-1");
 				else System.out.println(stack.peek());
+				break;
 			}
 		}
 	}
