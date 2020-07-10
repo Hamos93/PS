@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main_백준_2493_탑 {
@@ -8,30 +9,27 @@ public class Main_백준_2493_탑 {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
 		int N = Integer.parseInt(st.nextToken());
-		int[] top = new int[N+1];
+		
+		Stack<int[]> stack = new Stack<>();
+		int idx = 1;
+
+		StringBuilder sb = new StringBuilder();
 		
 		st = new StringTokenizer(br.readLine(), " ");
-		for(int i=1;i<=N;i++)
-			top[i] = Integer.parseInt(st.nextToken());
-		
-		for(int i=N;1<=i;i--){
-			boolean flag = false;
-			for(int j=i-1;1<=j;j--){
-				if(top[i] <= top[j]){
-					flag = true;
-					
-					top[i] = j;
-					break;
-				}
-			}
+		while(st.hasMoreTokens()) {
+			int height = Integer.parseInt(st.nextToken());
 			
-			if(!flag) top[i] = 0;
+			while(!stack.isEmpty() && stack.peek()[0] < height) stack.pop();
+			
+			if(stack.isEmpty()) {
+				sb.append("0 ");
+				stack.push(new int[] { height, idx++ });
+			}else {
+				sb.append(stack.peek()[1] + " ");
+				stack.push(new int[] { height, idx++ });
+			}
 		}
 		
-		StringBuilder sb = new StringBuilder();
-		for(int i=1;i<=N;i++)
-			sb.append(top[i] + " ");
-		
-		System.out.print(sb.toString());
+		System.out.print(sb.toString().trim());
 	}
 }
