@@ -14,19 +14,10 @@ public class Solution_D3_4522_세상의모든팰린드롬 {
 			char[] palindrome = line.toCharArray();
 			
 			int len = palindrome.length;
-			if(len % 2 == 1) {
-				for(int i=1;i<=len/2;i++) {
-					if(palindrome[len/2 - i] == '?' || palindrome[len/2 + i] == '?') {
-						palindrome[len/2 - i] = '?';
-						palindrome[len/2 + i] = '?';
-					}
-				}
-			}else {
-				for(int i=0;i<len/2;i++) {
-					if(palindrome[len/2 - i - 1] == '?' || palindrome[len/2 + i] == '?') {
-						palindrome[len/2 - i - 1] = '?';
-						palindrome[len/2 + i] = '?';
-					}
+			for(int i=0;i<len/2;i++) {
+				if(palindrome[i] == '?' || palindrome[len - i - 1] == '?') {
+					palindrome[i] = '?';
+					palindrome[len -i - 1] = '?';
 				}
 			}
 			
