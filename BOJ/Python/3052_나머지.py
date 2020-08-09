@@ -1,14 +1,8 @@
 data = list()
 for i in range(10):
-    value = int(input())
-    result = value % 42
-    
-    flag = True
-    for i in data:
-        if result == i:
-            flag = False
-            break
+    n = int(input())
+    data.append(n % 42)
 
-    if flag == True: data.append(result) 
-
+# set자료형은 중복을 허용하지 않으며, 순서X
+data = set(data)
 print(len(data))
