@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 
 public class Solution_D4_1861_정사각형방 {
 	private static int[][] room;
-	private static boolean[][] visit;
 	private static int N, len, answer;
 	private static final int[] di = { -1, 1, 0, 0 };
 	private static final int[] dj = { 0, 0, -1, 1 };
@@ -19,13 +18,9 @@ public class Solution_D4_1861_정사각형방 {
 			int ni = i + di[d];
 			int nj = j + dj[d];
 		
-			if(!isRange(ni, nj) || visit[ni][nj] || room[ni][nj] - room[i][j] != 1) continue;
-			
-			visit[ni][nj] = true;
+			if(!isRange(ni, nj) || room[ni][nj] - room[i][j] != 1) continue;
 			
 			dfs(ni, nj, room[ni][nj], start, cnt + 1);
-			
-			visit[ni][nj] = false;
 		}
 	}
 	
@@ -45,7 +40,6 @@ public class Solution_D4_1861_정사각형방 {
 			
 			N = Integer.parseInt(st.nextToken());
 			room = new int[N][N];
-			visit = new boolean[N][N];
 			
 			for(int i=0;i<N;i++) {
 				st = new StringTokenizer(br.readLine(), " ");
@@ -55,13 +49,8 @@ public class Solution_D4_1861_정사각형방 {
 			
 			len = 0; answer = 0;
 			for(int i=0;i<N;i++) {
-				for(int j=0;j<N;j++) {
-					visit[i][j] = true;
-					
+				for(int j=0;j<N;j++)
 					dfs(i, j, room[i][j], room[i][j], 1);
-					
-					visit[i][j] = false;
-				}
 			}
 
 			System.out.println("#" + tc + " " + answer + " " + len);
