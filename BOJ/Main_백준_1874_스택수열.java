@@ -9,34 +9,29 @@ public class Main_백준_1874_스택수열 {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
 		int n = Integer.parseInt(st.nextToken());
-		Stack<Integer> stack = new Stack<>();
 		
-		int idx = 1;
 		StringBuilder sb = new StringBuilder();
+		Stack<Integer> stack = new Stack<>(); 
+		
+		int i = 1;
 		while(0 < n--) {
 			st = new StringTokenizer(br.readLine(), " ");
+			int num = Integer.parseInt(st.nextToken());
 			
-			int num1 = Integer.parseInt(st.nextToken());
-			if(idx <= num1) {
-				for(int i=idx;i<=num1;i++) {
-					stack.push(i);
-					sb.append("+\n");
-				}
-				
+			while(stack.isEmpty() || stack.peek() < num) {
+				stack.push(i++);
+				sb.append("+\n");
+			}
+			
+			if(stack.peek() == num) {
 				stack.pop();
 				sb.append("-\n");
-			
-				idx = num1 + 1;
 			}else {
-				int num2 = stack.pop();
-				
-				if(num1 != num2) {
-					System.out.println("NO");
-					return;
-				}else sb.append("-\n");
+				System.out.print("NO");
+				return;
 			}
 		}
 		
-		System.out.print(sb.toString());
+		System.out.print(sb.toString().trim());
 	}
 }
