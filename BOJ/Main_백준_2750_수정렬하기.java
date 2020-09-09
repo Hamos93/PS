@@ -9,22 +9,20 @@ public class Main_백준_2750_수정렬하기 {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
 		int N = Integer.parseInt(st.nextToken());
-		int[] num = new int[N];
+		int[] array = new int[N];
 		
-		for(int i=0;i<N;i++){
+		for(int i=0;i<N;i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			
-			num[i] = Integer.parseInt(st.nextToken());
+			array[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Arrays.sort(num);
+		Arrays.sort(array);
 		
 		StringBuilder sb = new StringBuilder();
-		for(int i=0;i<N;i++){
-			if(i == N-1) sb.append(num[i]);
-			else sb.append(num[i] + "\n");
-		}
+		for(int i=0;i<N;i++)
+			sb.append(array[i] + "\n");
 		
-		System.out.print(sb.toString());
+		System.out.print(sb.toString().trim());
 	}
 }
