@@ -16,36 +16,39 @@ public class Main_백준_1966_프린터큐 {
 			int M = Integer.parseInt(st.nextToken());
 			
 			LinkedList<int[]> queue = new LinkedList<>();
+			
 			st = new StringTokenizer(br.readLine(), " ");
-	
-			int num = 0;
-			while(st.hasMoreTokens()) queue.offer(new int[] { Integer.parseInt(st.nextToken()), num++ });
-		
-			int cnt = 0;
-			loop: while(true) {
+			for(int i=0;i<N;i++) {
+				int importance = Integer.parseInt(st.nextToken());
+				
+				if(i != M) queue.offer(new int[] { importance, 0 });
+				else queue.offer(new int[] { importance, 1 });
+			}
+			
+			int order = 0;
+			while(!queue.isEmpty()) {
 				int importance = queue.peek()[0];
 				
-				boolean flag = true;
+				boolean flag = false;
 				for(int i=1;i<queue.size();i++) {
 					if(importance < queue.get(i)[0]) {
-						flag = false;
+						flag = true;
 						break;
 					}
 				}
 				
-				if(!flag) {
+				if(flag) {
 					queue.offer(queue.poll());
-					continue loop;
+					continue;
 				}
 				
-				int idx = queue.poll()[1];
-				cnt++;
+				int print = queue.poll()[1];
+				order++;
 				
-				if(idx == M) {
-					System.out.println(cnt);
-					break loop;
-				}
+				if(print == 1) break;
 			}
+			
+			System.out.println(order);
 		}
 	}
 }
