@@ -5,15 +5,18 @@ import java.util.Arrays;
 public class Main_백준_1427_소트인사이드 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String line = br.readLine().trim();
+		String num = br.readLine().trim();
 		
-		int[] array = new int[line.length()];
+		int[] array = new int[num.length()];
 		for(int i=0;i<array.length;i++)
-			array[i] = line.charAt(i) - '0';
-
+			array[i] = num.charAt(i) - '0';
+		
 		Arrays.sort(array);
 		
+		StringBuilder sb = new StringBuilder();
 		for(int i=array.length-1;0<=i;i--)
-			System.out.print(array[i]);
+			sb.append(array[i]);
+		
+		System.out.print(sb.toString());
 	}
 }
