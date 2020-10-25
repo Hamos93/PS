@@ -1,5 +1,5 @@
 
-public class Solution_행렬의곱셈 {
+public class Solution_L2_행렬의곱셈 {
 	public static int[][] solution(int[][] arr1, int[][] arr2) {
 		int N = arr1.length;
 		int M = arr2.length;

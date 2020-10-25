@@ -1,5 +1,5 @@
 
-public class Solution_최댓값과최솟값 {
+public class Solution_L2_최댓값과최솟값 {
 	public static String solution(String s) {
 		String[] array = s.split(" ");
 
