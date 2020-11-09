@@ -54,7 +54,7 @@ public class Main_백준_1744_수묶기 {
 			int value1 = plusDeque.pollLast();
 			int value2 = plusDeque.pollLast();
 		
-			if(value1 * value2 < value1 + value2) sum += (value1 + value2);
+			if(value1 == 1 || value2 == 1) sum += (value1 + value2);
 			else sum += value1 * value2;
 		}
 		
