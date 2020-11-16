@@ -6,7 +6,7 @@ public class Main_백준_2343_기타레슨 {
 	private static int N, M;
 	private static int[] lesson;
 	
-	public static boolean possible(long mid) {
+	public static boolean possible(int mid) {
 		int cnt = 0, sum = 0;
 		
 		for(int i=0;i<N;i++) {
