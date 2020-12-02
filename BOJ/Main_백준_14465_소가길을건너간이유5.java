@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class Main_백준14465_소가길을건너간이유5 {
+public class Main_백준_14465_소가길을건너간이유5 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
