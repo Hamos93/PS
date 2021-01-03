@@ -1,70 +1,102 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
+class Node implements Comparable<Node> {
+	int index;
+	int distance;
+	
+	public Node(int index, int distance) {
+		this.index = index;
+		this.distance = distance;
+	}
+	
+	public int getIndex() {
+		return this.index;
+	}
+	
+	public int getDistance() {
+		return this.distance;
+	}
+
+	@Override
+	public int compareTo(Node other) {
+		if(this.distance < other.distance) return -1;
+		return 1;
+	}
+}
+
 public class Main_백준_18352_특정거리의도시찾기 {
-	private static List<Integer>[] graph;
-	private static int[] visit;
-
-	private static void bfs(int X, int N) {
-		Queue<int[]> queue = new LinkedList<>();
-		visit = new int[N + 1];
-
-		queue.offer(new int[] { X, 0 });
-		visit[X] = 0;
-
-		while(!queue.isEmpty()) {
-			int[] poll = queue.poll();
-			int cur = poll[0], cnt = poll[1];
-
-			for(int next : graph[cur]) {
-				if(visit[next] == 0) {
-					queue.offer(new int[] { next, cnt + 1 });
-					visit[next] = cnt + 1;
+	private static final int INF = (int) 1e9;
+	private static ArrayList<ArrayList<Node>> graph;
+	private static int[] distance;
+	
+	public static void dijkstra(int start) {
+		PriorityQueue<Node> pq = new PriorityQueue<Node>();
+		
+		pq.offer(new Node(start, 0));
+		distance[start] = 0;
+		
+		while(!pq.isEmpty()) {
+			Node node = pq.poll();
+			
+			int cur = node.getIndex();
+			int dist = node.getDistance();
+			
+			if(distance[cur] < dist) continue;
+			
+			for(int i=0;i<graph.get(cur).size();i++) {
+				int cost = distance[cur] + graph.get(cur).get(i).getDistance();
+				
+				if(cost < distance[graph.get(cur).get(i).getIndex()]) {
+					distance[graph.get(cur).get(i).getIndex()] = cost;
+					pq.offer(new Node(graph.get(cur).get(i).getIndex(), cost));
 				}
 			}
 		}
 	}
-
+	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
+		
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
 		int K = Integer.parseInt(st.nextToken());
 		int X = Integer.parseInt(st.nextToken());
-
-		graph = new ArrayList[N + 1];
-		for(int i=1;i<=N;i++)
-			graph[i] = new ArrayList<>();
-
-		while(0 < M--) {
+		
+		graph = new ArrayList<ArrayList<Node>>();
+		distance = new int[N + 1];
+		
+		for(int i=0;i<=N;i++)
+			graph.add(new ArrayList<Node>());
+		
+		for(int i=0;i<M;i++) {
 			st = new StringTokenizer(br.readLine(), " ");
-
-			int u = Integer.parseInt(st.nextToken());
-			int v = Integer.parseInt(st.nextToken());
-
-			graph[u].add(v);
+			
+			int A = Integer.parseInt(st.nextToken());
+			int B = Integer.parseInt(st.nextToken());
+		
+			graph.get(A).add(new Node(B, 1));
 		}
-
-		bfs(X, N);
-
+		
+		Arrays.fill(distance, INF);
+		
+		dijkstra(X);
+		
 		StringBuilder sb = new StringBuilder();
-		boolean flag = false;
-
+		int cnt = 0;
 		for(int i=1;i<=N;i++) {
-			if(visit[i] == K){
+			if(distance[i] == K) {
+				cnt++;
 				sb.append(i + "\n");
-				flag = true;
 			}
 		}
-
-		if(!flag) System.out.print("-1");
-		else System.out.print(sb.toString());
+		
+		if(cnt == 0) System.out.print("-1");
+		else System.out.print(sb.toString().trim());
 	}
 }
