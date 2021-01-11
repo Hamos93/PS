@@ -1,8 +1,7 @@
-data = list()
-for i in range(10):
-    n = int(input())
-    data.append(n % 42)
+s = set()
 
-# set자료형은 중복을 허용하지 않으며, 순서X
-data = set(data)
-print(len(data))
+for i in range(10):
+    A = int(input())
+    s.add(A % 42)
+
+print(len(list(s)))
