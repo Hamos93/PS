@@ -13,7 +13,7 @@ public class Main_백준_4485_녹색옷입은젤다지 {
 	private static int[][] map;
 	private static int[][] distance;
 	
-	public static int dijkstra(int x, int y) {
+	public static int dijkstra(int r, int c) {
 		PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
 			@Override
 			public int compare(int[] o1, int[] o2) {
@@ -28,21 +28,21 @@ public class Main_백준_4485_녹색옷입은젤다지 {
 				distance[i][j] = INF;
 		}
 		
-		pq.offer(new int[] { x, y, map[x][y] });
-		distance[x][y] = map[x][y];
+		pq.offer(new int[] { r, c, map[r][c] });
+		distance[r][c] = map[r][c];
 
 		while(!pq.isEmpty()) {
 			int[] poll = pq.poll();
-			int curX = poll[0], curY = poll[1], cost = poll[2];
+			int x = poll[0], y = poll[1], cost = poll[2];
 			
 			for(int d=0;d<4;d++) {
-				int nx = curX + dx[d];
-				int ny = curY + dy[d];
+				int nx = x + dx[d];
+				int ny = y + dy[d];
 				
 				if(nx < 0 || N <= nx || ny < 0 || N <= ny) continue;
-				if(distance[curX][curY] + map[nx][ny] < distance[nx][ny]) {
-					pq.offer(new int[] { nx, ny, distance[curX][curY] + map[nx][ny] });
-					distance[nx][ny] = distance[curX][curY] + map[nx][ny];
+				if(map[nx][ny] + cost < distance[nx][ny]) {
+					pq.offer(new int[] { nx, ny, map[nx][ny] + cost });
+					distance[nx][ny] = map[nx][ny] + cost;
 				}
 			}
 		}
@@ -57,14 +57,11 @@ public class Main_백준_4485_녹색옷입은젤다지 {
 		int T = 1;
 		while(true) {
 			st = new StringTokenizer(br.readLine(), " ");
-			
 			N = Integer.parseInt(st.nextToken());
 			
-			if(N == 0)
-				return;
+			if(N == 0) return;
 			
 			map = new int[N][N];
-			
 			for(int i=0;i<N;i++) {
 				st = new StringTokenizer(br.readLine(), " ");
 				for(int j=0;j<N;j++)
@@ -72,8 +69,7 @@ public class Main_백준_4485_녹색옷입은젤다지 {
 			}
 			
 			int result = dijkstra(0, 0);
-			System.out.println("Problem " + T++ + ": " + result);
+			System.out.println("Problem " + (T++) + ": " + result);
 		}
-		
 	}
 }
