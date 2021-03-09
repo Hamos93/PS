@@ -10,26 +10,24 @@ public class Main_백준_2559_수열 {
 		int N = Integer.parseInt(st.nextToken());
 		int K = Integer.parseInt(st.nextToken());
 		
-		int[] temperature = new int[N];
+		int[] arr = new int[N];
+		int sum = 0;
 		
 		st = new StringTokenizer(br.readLine(), " ");
-		for(int i=0;i<N;i++)
-			temperature[i] = Integer.parseInt(st.nextToken());
-		
-		int result = 0;
-		for(int i=0;i<K;i++)
-			result += temperature[i];
-		
-		int max = result;
-		
-		// 누적합 계산
-		for(int i=K;i<N;i++) {
-			result -= temperature[i - K];
-			result += temperature[i];
+		for(int i=0;i<N;i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
 			
-			max = max < result ? result : max;
+			if(i < K) sum += arr[i];
 		}
-	
-		System.out.print(max);
+		
+		int temperature = sum;
+		for(int i=0;i<N-K;i++) {
+			sum -= arr[i];
+			sum += arr[i + K];
+			
+			temperature = Math.max(temperature, sum);
+		}
+		
+		System.out.print(temperature);
 	}
 }
