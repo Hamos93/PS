@@ -25,8 +25,8 @@ public class Solution_D3_5215_햄버거다이어트 {
 				int K = Integer.parseInt(st.nextToken());
 				
 				for(int j=1;j<=L;j++) {
-					if(j < K) dp[i][j] = dp[i-1][j-1];
-					else dp[i][j] = Math.max(dp[i-1][j-1], dp[i-1][j - K] + T);
+					if(j < K) dp[i][j] = dp[i-1][j];
+					else dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j - K] + T);
 				}
 			}
 		
