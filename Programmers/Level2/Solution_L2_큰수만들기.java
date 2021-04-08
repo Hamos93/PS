@@ -7,11 +7,6 @@ public class Solution_L2_큰수만들기 {
 		for(int i=0;i<number.length();i++) {
 			char num = number.charAt(i);
 
-			if(i == 0) {
-				stack.push(num);
-				continue;
-			}
-
 			if(stack.isEmpty() || num <= stack.peek()) stack.push(num);
 			else {
 				while(!stack.isEmpty() && stack.peek() < num && 0 < k) {
@@ -23,15 +18,12 @@ public class Solution_L2_큰수만들기 {
 			}
 		}
 
+		while(0 < k--) stack.pop();
+		
 		StringBuilder sb = new StringBuilder();
 		while(!stack.isEmpty()) sb.append(stack.pop());
 
-		String answer = sb.reverse().toString();
-
-		if(0 < k)
-			answer = answer.substring(0, answer.length() - k);
-
-		return answer;
+		return sb.reverse().toString();
 	}
 
 	public static void main(String[] args) {
